@@ -9,14 +9,17 @@ $(document).ready(function() {
       height = 500;
 
   var points = [
-    [200, 200],
-    [760, 300]
+    [20, 20],
+    [701, 30],
+    [400, 200],
+    [760, 300],
+    [200, 200]
   ];
 
   var voronoi = d3.geom.voronoi()
       .clipExtent([[padding, padding], [width - padding, height - padding]]);
 
-  var color = d3.scale.category10();
+  var color = d3.scale.category20c();
 
   var svg = d3.select("body").append("svg")
       .attr("width", width)
@@ -26,7 +29,11 @@ $(document).ready(function() {
       .data(voronoi(points))
     .enter().append("path")
       .style("fill", function(d, i) { return color(i); })
-      .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+      .style("opacity", .5)
+      .attr("d", function(d) { return "M" + d.join("L") + "Z"; })
+      .on('click', function() {
+        console.log('stuff');
+      });
 
   svg.selectAll("circle")
       .data(points)
