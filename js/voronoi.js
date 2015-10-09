@@ -25,6 +25,17 @@ module.exports = (function() {
         });
 }
 
+Voronoi.prototype.updateAll = function(points, padding ,width, height, active) {
+
+    var self = this;
+    this.data = points;
+    this.padding = padding;
+
+    this.width = width;
+    this.height = height;
+    this.active = false;
+};
+
 Voronoi.prototype.update = function(x,y) {
   if (this.active) {
     this.data[this.data.length-1][1] = y;
