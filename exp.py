@@ -1,7 +1,8 @@
 import mlflow
+import random
 
 experiment_id = mlflow.create_experiment(
-  "my-experiment-name",
+  "my-experiment-name"+random.randint(1, 1000),
   tags={"version": "v1", "priority": "P1"},
 )
 
